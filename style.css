@@ -1,0 +1,113 @@
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  object-fit: contain;
+}
+
+a {
+  color: #302114;
+}
+
+#personal-informations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#socials img {
+  height: 24px;
+  width: 24px;
+}
+
+#coordinates, #socials {
+  display: flex;
+  flex-direction: row;
+}
+
+#socials {
+  gap: 10px;
+}
+
+#coordinates > span + span::before {
+  content: "|";
+  margin: 0 5px;
+}
+
+.education-entry, .experience-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+:is(.education-entry, .experience-entry) > :nth-child(even) {
+  justify-self: end;
+}
+
+#projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5px;
+  column-gap: 10px;
+}
+
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 5px;
+  /* padding: 10px; */
+}
+
+.project h2 {
+  text-align: center;
+}
+
+.project img {
+  height: 20px;
+  width: 20px;
+}
+
+.project a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.project p {
+  padding-left: 10px;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm 12mm;
+  }
+  body {
+    font-size: 9pt;
+    margin: 0; /* browsers add ~8px default body margin on top of your @page margin */
+    margin-right: 1px; /* #projects was getting cutoff to the right */
+  }
+  #header h1 {
+    font-size: 16pt;
+  }
+  .main-section h1 {
+    font-size: 11pt;
+    border-bottom: 1px solid black;
+    margin-bottom: 0;
+  }
+  .main-section > :is(.experience-section, .education-section, #projects) {
+    margin-top: 10px;
+  }
+  h2 {
+    font-size: 11pt;
+    margin-bottom: 5px;
+  }
+  ul, p {
+    margin: 5px 0;
+  }
+}
